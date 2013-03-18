@@ -1,8 +1,8 @@
 # rack-override-user-agent
 
 1. rack-override-user-agent will override user agent by cookie.
-2. you can set the cookie by url query.
-3. you will be free from browser extension that override user agent.
+2. You can set the cookie by url query.
+3. You will be free from browser extension that override user agent.
 
 # How to use
 
@@ -16,13 +16,13 @@
 ### config.ru
     use Rack::OverrideUserAgent
 
-### access by browser
+### Access by browser
     http://domain.of.your.app/?rack-override-user-agent="encoded user agent"
     
     ex)
     http://localhost:3000/?rack-override-user-agent=Mozilla%2F5.0+%28iPhone%3B+CPU+iPhone+OS+6_0+like+Mac+OS+X%29
 
-##### after first access, all subsequent access user agent will be overridden without url query.
+##### After first access, all subsequent access user agent will be overridden without url query.
 
 ## Options usage
 
@@ -33,13 +33,13 @@
         :iphone => 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X)',
       }
 
-### access by browser
+### Access by browser
     http://domain.of.your.app/?ua=iphone
     
     ex)
     http://localhost:3000/?ua=iphone
 
-##### after first access, all subsequent access user agent will be overridden without url query.
+##### After first access, all subsequent access user agent will be overridden without url query.
 
 
 ## Contributing to rack-override-user-agent
