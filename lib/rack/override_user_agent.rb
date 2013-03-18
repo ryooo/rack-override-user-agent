@@ -1,5 +1,4 @@
 module Rack
-  autoload :OverrideUserAgent, 'rack/override-user-agent'
   class OverrideUserAgent
     def initialize(app, options = {})
       @app = app

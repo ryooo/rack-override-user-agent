@@ -1,1 +1,3 @@
-require '../../../override_user_agent.rb'
+module Rack
+  autoload :OverrideUserAgent, 'rack/override_user_agent'
+end
