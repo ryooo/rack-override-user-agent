@@ -21,7 +21,7 @@ you will be free from browser extension that override user agent.
     ex)
     http://localhost:3000/?rack-override-user-agent=Mozilla%2F5.0+%28iPhone%3B+CPU+iPhone+OS+6_0+like+Mac+OS+X%29
 
-### Options usage
+## Options usage
 
 ### config.ru
     use Rack::OverrideUserAgent,
