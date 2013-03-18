@@ -9,21 +9,30 @@ module Rack
 
     def call(env)
       request = Rack::Request.new(env)
-      response = Rack::Response.new
+      cookie_controll = nil
       if ua = request.params["#{@params_key}-rm"]
-        response.delete_cookie(@params_key)
+        cookie_controll = :delete
       elsif ua = request.params[@params_key]
         ua = @preset_ua[ua.to_sym] || @preset_ua[ua.to_s] || ua
         env['HTTP_USER_AGENT'] = ua
-        response.set_cookie(@params_key, ua)
+        cookie_controll = :set
       elsif ua = request.cookies[@params_key]
         env['HTTP_USER_AGENT'] = ua
       end
       
       status, headers, body = @app.call(env)
+      response = Rack::Response.new
       response.status = status
       headers.map {|key, value| response[key] = value}
       response.body = body
+      
+      case cookie_controll
+      when :delete
+        response.set_cookie(@params_key, {:path => '/'})
+      when :set
+        response.set_cookie(@params_key, {:value => ua, :path => '/'})
+      end
+      
       response.finish
     end
   end

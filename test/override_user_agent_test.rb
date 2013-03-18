@@ -23,7 +23,7 @@ class RackOverrideUserAgentTestNoOption < Test::Unit::TestCase
   def test_should_override_user_agent_by_query
     get "/?rack-override-user-agent=#{ENC_IPHONE_UA}"
     assert_equal "ua is #{IPHONE_UA}", last_response.body
-    assert_equal "rack-override-user-agent=#{ENC_IPHONE_UA}", last_response.header["Set-Cookie"]
+    assert_equal "rack-override-user-agent=#{ENC_IPHONE_UA}; path=/", last_response.header["Set-Cookie"]
   end
 
   def test_should_override_user_agent_by_cookie
@@ -35,7 +35,7 @@ class RackOverrideUserAgentTestNoOption < Test::Unit::TestCase
 
   def test_should_rm_cookie
     get "/?rack-override-user-agent-rm="
-    assert_equal "rack-override-user-agent=; expires=Thu, 01-Jan-1970 00:00:00 GMT", last_response.header["Set-Cookie"]
+    assert_equal "rack-override-user-agent=; path=/", last_response.header["Set-Cookie"]
   end
 end
 
@@ -53,7 +53,7 @@ class RackOverrideUserAgentTestPresetUa < Test::Unit::TestCase
   def test_should_override_user_agent_by_settings_and_query
     get "/?rack-override-user-agent=my_sp"
     assert_equal "ua is my smart phone ua", last_response.body
-    assert_equal "rack-override-user-agent=my+smart+phone+ua", last_response.header["Set-Cookie"]
+    assert_equal "rack-override-user-agent=my+smart+phone+ua; path=/", last_response.header["Set-Cookie"]
   end
 end
 
@@ -71,6 +71,6 @@ class RackOverrideUserAgentTestParamsKey < Test::Unit::TestCase
   def test_should_override_user_agent_by_query
     get "/?hogehoge=#{ENC_IPHONE_UA}"
     assert_equal "ua is #{IPHONE_UA}", last_response.body
-    assert_equal "hogehoge=#{ENC_IPHONE_UA}", last_response.header["Set-Cookie"]
+    assert_equal "hogehoge=#{ENC_IPHONE_UA}; path=/", last_response.header["Set-Cookie"]
   end
 end
