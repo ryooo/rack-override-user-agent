@@ -4,7 +4,7 @@ rack-override-user-agent will override user agent by cookie.
 you can set the cookie by url query.
 you will be free from browser extension that override user agent.
 
-* How to use
+# How to use
 
 ## Install
 
