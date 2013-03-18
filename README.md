@@ -9,6 +9,7 @@ you will be free from browser extension that override user agent.
 ## Install
 
     $ gem install rack-override-user-agent
+    $ bundle install
 
 ## Default usage
 
